@@ -73,19 +73,47 @@
             <form class="form-horizontal" method="POST" action="/settings/company/export/" id="company_export_form">
               <div class="form-group">
                 <label for="export_company_btn" class="col-md-6 control-label">Export company data</label>
-                <div class="col-md-6">
-                  <button type="submit" id="export_company_btn" class="btn btn-success">Download</button>
-                </div>
               </div>
               <div class="form-group">
                 <div class="col-md-offset-2">
                   <em>Download company dump file that could be used to restore account on another TimeOff.Management installation.</em>
                 </div>
               </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-11">
+                        <button type="submit" id="export_company_btn" class="btn btn-success pull-right">Download</button>
+                    </div>
+                </div>
             </form>
 
 
-            <div class="form-group">&nbsp;</div>
+            <form class="form-horizontal" method="POST" action="/settings/company/export-leave-summary/" id="accounting_export_form">
+                <div class="form-group">
+                        <label for="export_accounting_btn" class="col-md-7 control-label">Export summary leave data</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <em>Download employees absences for selected months in XLSX file.</em>
+                    </div>
+
+                </div>
+              <div class="form-group">
+
+                  <div class="col-md-4 col-md-offset-2">
+                      <label>From:</label>
+                      <input type="text" class="form-control export-from-input" id="from" data-provide="datepicker" data-date-start-view="1" data-date-min-view-mode="1"  data-date-autoclose="1" data-date-format="{{# with logged_user.company }}{{this.get_default_date_format_for_date_picker}}{{/with}}" value="{{get_date_current_month}}" name="from_date">
+                  </div>
+                  <div class="col-md-4">
+                      <label>To:</label>
+                      <input type="text" class="form-control export-to-input" id="to" data-provide="datepicker" data-date-start-view="1" data-date-min-view-mode="1"  data-date-autoclose="1" data-date-format="{{# with logged_user.company }}{{this.get_default_date_format_for_date_picker}}{{/with}}" value="{{get_date_current_month}}" name="to_date">
+                  </div>
+                  <div class="col-md-2">
+                      <label>&nbsp;</label>
+                      <button type="submit" id="export_accounting_btn" class="btn btn-success ">Download</button>
+                  </div>
+              </div>
+
+            </form>
 
             <form class="form-horizontal" method="POST" action="/settings/schedule" id="company_schedule_form">
             <input type="hidden" name="company_wide" value="1">
